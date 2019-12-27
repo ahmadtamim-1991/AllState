@@ -1,10 +1,14 @@
 package com.ahmad.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,10 +22,16 @@ public class CoveredDriverEntity {
 	private String firstName;
 	@Column(name = "lastName")
 	private String lastName;
-	@Column(name = "lisenceNumber")
-	private String lisenceNumber;
-	@Column(name = "lisenceState")
-	private String lisenceState;
+	@Column(name = "licenseNumber")
+	private String licenseNumber;
+	@Column(name = "licenseState")
+	private String licenseState;
+	@Column(name = "status")
+	private Boolean status;
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "policyId")
+	private PolicyEntity policy;
 
 	public Long getId() {
 		return id;
@@ -47,26 +57,36 @@ public class CoveredDriverEntity {
 		this.lastName = lastName;
 	}
 
-	public String getLisenceNumber() {
-		return lisenceNumber;
+	public String getLicenseNumber() {
+		return licenseNumber;
 	}
 
-	public void setLisenceNumber(String lisenceNumber) {
-		this.lisenceNumber = lisenceNumber;
+	public void setLicenseNumber(String licenseNumber) {
+		this.licenseNumber = licenseNumber;
 	}
 
-	public String getLisenceState() {
-		return lisenceState;
+	public String getLicenseState() {
+		return licenseState;
 	}
 
-	public void setLisenceState(String lisenceState) {
-		this.lisenceState = lisenceState;
+	public void setLicenseState(String licenseState) {
+		this.licenseState = licenseState;
 	}
 
-	@Override
-	public String toString() {
-		return "CoveredDriverEntity [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", lisenceNumber=" + lisenceNumber + ", lisenceState=" + lisenceState + "]";
+	public PolicyEntity getPolicy() {
+		return policy;
+	}
+
+	public void setPolicy(PolicyEntity policy) {
+		this.policy = policy;
+	}
+
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
 	}
 
 }

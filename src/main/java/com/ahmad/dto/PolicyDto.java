@@ -1,6 +1,9 @@
 package com.ahmad.dto;
 
 import java.util.Date;
+import java.util.List;
+
+import com.ahmad.entities.CoveredDriverEntity;
 
 public class PolicyDto {
 
@@ -10,6 +13,8 @@ public class PolicyDto {
 	private Date startDate;
 	private Date expireDate;
 	private double privce;
+
+	private List<CoveredDriverDto> coveredDriver;
 
 	public Long getId() {
 		return id;
@@ -59,10 +64,12 @@ public class PolicyDto {
 		this.privce = privce;
 	}
 
-	@Override
-	public String toString() {
-		return "PolicyDto [id=" + id + ", type=" + type + ", policyNumber=" + policyNumber + ", startDate=" + startDate
-				+ ", expireDate=" + expireDate + ", privce=" + privce + "]";
+	public List<CoveredDriverDto> getCoveredDriver() {
+		return coveredDriver;
+	}
+
+	public void setCoveredDriver(List<CoveredDriverDto> coveredDriver) {
+		this.coveredDriver = coveredDriver;
 	}
 
 }

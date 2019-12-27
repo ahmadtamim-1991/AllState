@@ -1,10 +1,14 @@
 package com.ahmad.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +28,10 @@ public class AddressEntity {
 	private String state;
 	@Column(name = "zip")
 	private String zip;
+	
+	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@JoinColumn(name="costumerId")
+	private CostumerEntity costumerEntity;
 
 	public Long getId() {
 		return id;
@@ -73,10 +81,14 @@ public class AddressEntity {
 		this.zip = zip;
 	}
 
-	@Override
-	public String toString() {
-		return "AddressEntity [id=" + id + ", type=" + type + ", street=" + street + ", city=" + city + ", state="
-				+ state + ", zip=" + zip + "]";
+	public CostumerEntity getCostumerEntity() {
+		return costumerEntity;
 	}
+
+	public void setCostumerEntity(CostumerEntity costumerEntity) {
+		this.costumerEntity = costumerEntity;
+	}
+
+
 
 }

@@ -7,6 +7,7 @@ public class CoveredDriverDto {
 	private String lastName;
 	private String lisenceNumber;
 	private String lisenceState;
+	private Boolean status;
 
 	public Long getId() {
 		return id;
@@ -48,10 +49,12 @@ public class CoveredDriverDto {
 		this.lisenceState = lisenceState;
 	}
 
-	@Override
-	public String toString() {
-		return "CoveredDriverDto [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", lisenceNumber="
-				+ lisenceNumber + ", lisenceState=" + lisenceState + "]";
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
 	}
 
 }

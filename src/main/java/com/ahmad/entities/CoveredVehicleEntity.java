@@ -1,10 +1,14 @@
 package com.ahmad.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +28,12 @@ public class CoveredVehicleEntity {
 	private String color;
 	@Column(name = "vin")
 	private String vin;
+	@Column(name = "status")
+	private Boolean status;
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "PolicyId")
+	private PolicyEntity policy1;
 
 	public Long getId() {
 		return id;
@@ -73,10 +83,20 @@ public class CoveredVehicleEntity {
 		this.vin = vin;
 	}
 
-	@Override
-	public String toString() {
-		return "CoveredVehicleEntity [id=" + id + ", make=" + make + ", model=" + model + ", year=" + year + ", color="
-				+ color + ", vin=" + vin + "]";
+	public PolicyEntity getPolicy1() {
+		return policy1;
+	}
+
+	public void setPolicy1(PolicyEntity policy1) {
+		this.policy1 = policy1;
+	}
+
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
 	}
 
 }
