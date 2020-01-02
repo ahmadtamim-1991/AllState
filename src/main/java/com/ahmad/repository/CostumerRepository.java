@@ -6,6 +6,8 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ahmad.dto.AddressDto;
+import com.ahmad.entities.AddressEntity;
 import com.ahmad.entities.CostumerEntity;
 
 @Repository
@@ -17,6 +19,10 @@ public class CostumerRepository {
 	public CostumerEntity create(CostumerEntity ce) {
 		return entityManager.merge(ce);
 
+	}
+
+	public AddressEntity saveAddress(AddressEntity add) {
+		return entityManager.merge(add);
 	}
 
 	public CostumerEntity getCostumerById(Long id) {

@@ -1,5 +1,9 @@
 package com.ahmad.dto;
 
+import java.util.List;
+
+import com.ahmad.entities.AddressEntity;
+
 public class CostumerDto {
 	private Long id;
 	private String firstName;
@@ -8,6 +12,8 @@ public class CostumerDto {
 	private String phone;
 	private String gender;
 	private int ssn;
+
+	private List<AddressDto> address;
 
 	public Long getId() {
 		return id;
@@ -65,10 +71,12 @@ public class CostumerDto {
 		this.ssn = ssn;
 	}
 
-	@Override
-	public String toString() {
-		return "CostumerDto [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", phone=" + phone + ", gender=" + gender + ", ssn=" + ssn + "]";
+	public List<AddressDto> getAddress() {
+		return address;
+	}
+
+	public void setAddress(List<AddressDto> address) {
+		this.address = address;
 	}
 
 }

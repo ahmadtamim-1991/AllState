@@ -37,10 +37,10 @@ public class PolicyEntity {
 	@JoinColumn(name = "costumerId")
 	private CostumerEntity costumer;
 
-	@OneToMany(mappedBy = "policy")
+	@OneToMany(mappedBy = "policy",cascade = CascadeType.ALL )
 	private List<CoveredDriverEntity> coveredDriver;
 
-	@OneToMany(mappedBy = "policy1")
+	@OneToMany(mappedBy = "policy1",cascade = CascadeType.ALL )
 	private List<CoveredVehicleEntity> coveredVehicle;
 
 	public Long getId() {

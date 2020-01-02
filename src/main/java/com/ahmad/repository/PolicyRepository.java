@@ -2,6 +2,7 @@ package com.ahmad.repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,6 +33,13 @@ public class PolicyRepository {
 	
 	public PolicyEntity getPolicyById(Long id) {
 		return manager.find(PolicyEntity.class,id);
+	}
+	
+	public PolicyEntity FindByPolicyNumber(String policyNumber) {
+		Query q = manager.createQuery("from PolicyEntity p where p.policyNumber =:policyNumber");
+		q.setParameter("policyNumber",policyNumber);
+		
+		return (PolicyEntity) q.getSingleResult();
 	}
 	
 

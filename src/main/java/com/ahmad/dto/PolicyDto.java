@@ -16,6 +16,8 @@ public class PolicyDto {
 
 	private List<CoveredDriverDto> coveredDriver;
 
+	private List<CoveredVehicleDto> coveredVehicle;
+
 	public Long getId() {
 		return id;
 	}
@@ -71,5 +73,14 @@ public class PolicyDto {
 	public void setCoveredDriver(List<CoveredDriverDto> coveredDriver) {
 		this.coveredDriver = coveredDriver;
 	}
+
+	public List<CoveredVehicleDto> getCoveredVehicle() {
+		return coveredVehicle;
+	}
+
+	public void setCoveredVehicle(List<CoveredVehicleDto> coveredVehicle) {
+		this.coveredVehicle = coveredVehicle;
+	}
+
 
 }

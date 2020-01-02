@@ -28,9 +28,9 @@ public class AddressEntity {
 	private String state;
 	@Column(name = "zip")
 	private String zip;
-	
-	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-	@JoinColumn(name="costumerId")
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "costumerId")
 	private CostumerEntity costumerEntity;
 
 	public Long getId() {
@@ -88,7 +88,5 @@ public class AddressEntity {
 	public void setCostumerEntity(CostumerEntity costumerEntity) {
 		this.costumerEntity = costumerEntity;
 	}
-
-
 
 }
